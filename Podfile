@@ -5,5 +5,6 @@ use_frameworks!
 target 'PostMe' do
 
 pod 'Firebase'
+pod 'Alamofire', '~> 3.4'
 
 end
