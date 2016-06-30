@@ -12,9 +12,12 @@
 		A0F379C11D25788C001A30A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F379BF1D25788C001A30A8 /* Main.storyboard */; };
 		A0F379C31D25788C001A30A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F379C21D25788C001A30A8 /* Assets.xcassets */; };
 		A0F379C61D25788C001A30A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F379C41D25788C001A30A8 /* LaunchScreen.storyboard */; };
+		A0F379CE1D2579A4001A30A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0F379CD1D2579A4001A30A8 /* GoogleService-Info.plist */; };
+		D16B2D9D1282330C786C21B6 /* Pods_PostMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55CB7627CFB10C0F69A3E45 /* Pods_PostMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F87A72553847CB9D8CE0651 /* Pods-PostMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostMe/Pods-PostMe.debug.xcconfig"; sourceTree = "<group>"; };
 		A0F379B81D25788C001A30A8 /* PostMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F379BB1D25788C001A30A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F379BD1D25788C001A30A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		A0F379C21D25788C001A30A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0F379C51D25788C001A30A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0F379C71D25788C001A30A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0F379CD1D2579A4001A30A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AF30DE3445C8FA2A450612FF /* Pods-PostMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostMe/Pods-PostMe.release.xcconfig"; sourceTree = "<group>"; };
+		C55CB7627CFB10C0F69A3E45 /* Pods_PostMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PostMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D16B2D9D1282330C786C21B6 /* Pods_PostMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				A0F379BA1D25788C001A30A8 /* PostMe */,
 				A0F379B91D25788C001A30A8 /* Products */,
+				CB7949108A56E7E6863D7E35 /* Pods */,
+				A8901D3178A1B3672FDB98E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +69,26 @@
 				A0F379C21D25788C001A30A8 /* Assets.xcassets */,
 				A0F379C41D25788C001A30A8 /* LaunchScreen.storyboard */,
 				A0F379C71D25788C001A30A8 /* Info.plist */,
+				A0F379CD1D2579A4001A30A8 /* GoogleService-Info.plist */,
 			);
 			path = PostMe;
+			sourceTree = "<group>";
+		};
+		A8901D3178A1B3672FDB98E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C55CB7627CFB10C0F69A3E45 /* Pods_PostMe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB7949108A56E7E6863D7E35 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F87A72553847CB9D8CE0651 /* Pods-PostMe.debug.xcconfig */,
+				AF30DE3445C8FA2A450612FF /* Pods-PostMe.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0F379CA1D25788C001A30A8 /* Build configuration list for PBXNativeTarget "PostMe" */;
 			buildPhases = (
+				F00488D194501BB2A8AADA50 /* 📦 Check Pods Manifest.lock */,
 				A0F379B41D25788C001A30A8 /* Sources */,
 				A0F379B51D25788C001A30A8 /* Frameworks */,
 				A0F379B61D25788C001A30A8 /* Resources */,
+				AA65A89AE5EEC5F55E6DFCF0 /* 📦 Embed Pods Frameworks */,
+				D21A9566B0BE7BE6A672EB88 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,12 +154,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0F379C61D25788C001A30A8 /* LaunchScreen.storyboard in Resources */,
+				A0F379CE1D2579A4001A30A8 /* GoogleService-Info.plist in Resources */,
 				A0F379C31D25788C001A30A8 /* Assets.xcassets in Resources */,
 				A0F379C11D25788C001A30A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AA65A89AE5EEC5F55E6DFCF0 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PostMe/Pods-PostMe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D21A9566B0BE7BE6A672EB88 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PostMe/Pods-PostMe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F00488D194501BB2A8AADA50 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A0F379B41D25788C001A30A8 /* Sources */ = {
@@ -248,22 +327,24 @@
 		};
 		A0F379CB1D25788C001A30A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F87A72553847CB9D8CE0651 /* Pods-PostMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PostMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.abs.PostMe.PostMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abs.PostMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		A0F379CC1D25788C001A30A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF30DE3445C8FA2A450612FF /* Pods-PostMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PostMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.abs.PostMe.PostMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abs.PostMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -287,6 +368,7 @@
 				A0F379CC1D25788C001A30A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
