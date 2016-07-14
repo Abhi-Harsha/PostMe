@@ -81,6 +81,9 @@
                                                     <constraint firstAttribute="height" constant="50" id="ECx-BZ-2XW"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="fb-icon"/>
+                                                <connections>
+                                                    <action selector="onFbBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qhO-os-gv0"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

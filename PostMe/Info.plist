@@ -18,9 +18,9 @@
             </array>
         </dict>
     </array>
-    <key>1020145421409662</key>
+    <key>FacebookAppID</key>
     <string>1020145421409662</string>
-    <key>PostMe</key>
+    <key>FacebookDisplayName</key>
     <string>PostMe</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
