@@ -10,12 +10,14 @@
 		A0C614611D2582490092CBAF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6145E1D2582490092CBAF /* FBSDKCoreKit.framework */; };
 		A0C614621D2582490092CBAF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6145F1D2582490092CBAF /* FBSDKLoginKit.framework */; };
 		A0C614631D2582490092CBAF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C614601D2582490092CBAF /* FBSDKShareKit.framework */; };
+		A0EBF6E31D3A983A00E4D1AF /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBF6E21D3A983A00E4D1AF /* DataService.swift */; };
 		A0F379BC1D25788C001A30A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F379BB1D25788C001A30A8 /* AppDelegate.swift */; };
 		A0F379BE1D25788C001A30A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F379BD1D25788C001A30A8 /* ViewController.swift */; };
 		A0F379C11D25788C001A30A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F379BF1D25788C001A30A8 /* Main.storyboard */; };
 		A0F379C31D25788C001A30A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F379C21D25788C001A30A8 /* Assets.xcassets */; };
 		A0F379C61D25788C001A30A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F379C41D25788C001A30A8 /* LaunchScreen.storyboard */; };
 		A0F379CE1D2579A4001A30A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0F379CD1D2579A4001A30A8 /* GoogleService-Info.plist */; };
+		A0F3EB4D1D3C2076002F18E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3EB4C1D3C2076002F18E0 /* Constants.swift */; };
 		D16B2D9D1282330C786C21B6 /* Pods_PostMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55CB7627CFB10C0F69A3E45 /* Pods_PostMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,7 @@
 		A0C6145E1D2582490092CBAF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		A0C6145F1D2582490092CBAF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		A0C614601D2582490092CBAF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		A0EBF6E21D3A983A00E4D1AF /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		A0F379B81D25788C001A30A8 /* PostMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F379BB1D25788C001A30A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F379BD1D25788C001A30A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		A0F379C51D25788C001A30A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0F379C71D25788C001A30A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0F379CD1D2579A4001A30A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A0F3EB4C1D3C2076002F18E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AF30DE3445C8FA2A450612FF /* Pods-PostMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostMe/Pods-PostMe.release.xcconfig"; sourceTree = "<group>"; };
 		C55CB7627CFB10C0F69A3E45 /* Pods_PostMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PostMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -73,6 +77,14 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		A0EBF6E11D3A982200E4D1AF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A0EBF6E21D3A983A00E4D1AF /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		A0F379AF1D25788C001A30A8 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +106,8 @@
 		A0F379BA1D25788C001A30A8 /* PostMe */ = {
 			isa = PBXGroup;
 			children = (
+				A0F3EB4B1D3C205D002F18E0 /* Utilities */,
+				A0EBF6E11D3A982200E4D1AF /* Services */,
 				A02B0CF21D353E5600DBD750 /* Model */,
 				A02B0CF31D353E6500DBD750 /* View */,
 				A02B0CF41D353E7900DBD750 /* Controller */,
@@ -105,6 +119,14 @@
 				A0F379CD1D2579A4001A30A8 /* GoogleService-Info.plist */,
 			);
 			path = PostMe;
+			sourceTree = "<group>";
+		};
+		A0F3EB4B1D3C205D002F18E0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A0F3EB4C1D3C2076002F18E0 /* Constants.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		A8901D3178A1B3672FDB98E4 /* Frameworks */ = {
@@ -251,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0EBF6E31D3A983A00E4D1AF /* DataService.swift in Sources */,
 				A0F379BE1D25788C001A30A8 /* ViewController.swift in Sources */,
 				A0F379BC1D25788C001A30A8 /* AppDelegate.swift in Sources */,
+				A0F3EB4D1D3C2076002F18E0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

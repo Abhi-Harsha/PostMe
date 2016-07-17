@@ -11,12 +11,14 @@ import Firebase
 import Alamofire
 import FBSDKCoreKit
 import FBSDKLoginKit
+import FirebaseAuth
 
 
 class ViewController: UIViewController {
-   
     
-    
+    @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var password: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +28,29 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onLoginBtnPressed(sender: UIButton!) {
+        
+        if let name = userName.text where userName.text != "", let pwd = password.text where password.text != "" {
+            FIRAuth.auth()?.createUserWithEmail(name, password: pwd, completion: { user, error in
+                
+                if error != nil {
+                    switch error!.code {
+                        
+                    case 17026: print("weak password")
+                                break;
+                    default: print("default")
+                                break
+                    }
+                    
+                } else {
+                    self.performSegueWithIdentifier(LoggedIn, sender: sender)
+                }
+                
+            })
+        }
+        
     }
     
     @IBAction func onFbBtnPressed(sender: UIButton!) {
@@ -38,23 +63,25 @@ class ViewController: UIViewController {
                 print("Facebook login was cancelled")
             } else {
                 print("logged into facebook")
+            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+                print(credential)
+                
+                FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+                    //creating user on firebase?
+                    
+                    if error != nil {
+                        print(error.debugDescription)
+                    } else {
+                        print("user created on firebase\(user.debugDescription)")
+                    }
+                }
+                self.performSegueWithIdentifier(LoggedIn, sender: sender)
+                
             }
         }
     }
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        if let err = error {
-            print("Login failed with following error \(err.debugDescription)")
-        } else {
-         print("Inside loginButton protocol method")
-            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
-            print("User creds is \(credential)")
-        }
-    }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        
-    }
+
 
 
 }

@@ -62,6 +62,9 @@
                                                         <state key="normal" title="Login / Singup">
                                                             <color key="titleColor" red="0.95976502709980394" green="0.94580225648073557" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="onLoginBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wMa-eP-eOD"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -71,7 +74,7 @@
                                                     <constraint firstAttribute="width" constant="100" id="kQJ-ov-pNW"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQ5-gh-hhA" userLabel="FB icon">
@@ -150,10 +153,39 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gGY-3F-EJ2" secondAttribute="bottom" id="d8Z-cf-P61"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="password" destination="jMr-56-4i8" id="am5-6d-0FC"/>
+                        <outlet property="userName" destination="aB1-f7-YYF" id="nmo-tO-xuH"/>
+                        <segue destination="5g1-kU-pXp" kind="show" identifier="loggedIn" id="VYp-bu-uty"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="293" y="288"/>
+            <point key="canvasLocation" x="-21" y="252"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4XP-Ug-rfC">
+            <objects>
+                <viewController id="5g1-kU-pXp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n8N-rC-vHI"/>
+                        <viewControllerLayoutGuide type="bottom" id="B2D-Ke-hJ8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uEn-lr-zDk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Qk-gB-cbW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="1" green="0.081228538589999996" blue="0.19420842599999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JoX-4L-U8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="621" y="237"/>
         </scene>
     </scenes>
     <resources>
