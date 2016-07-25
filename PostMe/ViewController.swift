@@ -86,8 +86,6 @@ class ViewController: UIViewController {
                 print(credential)
                 
                 FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-                    //creating user on firebase?
-                    
                     if let errorcode = error {
                         print(errorcode.debugDescription)
                     } else {
