@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //NSUserDefaults constants
 let USER_ID = "uid"
@@ -14,3 +15,6 @@ let USER_ID = "uid"
 
 //Segue Indentifer
 let LoggedIn = "loggedIn"
+
+//colors
+let SHADOW_COLOR: CGFloat = 157.0 / 255.0
