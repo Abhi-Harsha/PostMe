@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         if NSUserDefaults.standardUserDefaults().valueForKey(USER_ID) != nil {
-            
+            self.performSegueWithIdentifier(LoggedIn, sender: nil)
         }
     }
     

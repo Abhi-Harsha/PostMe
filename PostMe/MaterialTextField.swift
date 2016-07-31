@@ -12,8 +12,11 @@ class MaterialTextField: UITextField {
 
     override func awakeFromNib() {
         layer.cornerRadius = 2.0
-        layer.borderColor = UIColor.darkGrayColor().CGColor
+        layer.borderColor = UIColor.blackColor().CGColor
         layer.borderWidth = 1.0
+        layer.shadowOpacity = 0.8
+        layer.shadowColor = UIColor.darkGrayColor().CGColor
+        
     }
     //placebolder
     override func textRectForBounds(bounds: CGRect) -> CGRect {

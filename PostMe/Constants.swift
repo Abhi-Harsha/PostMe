@@ -13,8 +13,9 @@ import UIKit
 let USER_ID = "uid"
 
 
-//Segue Indentifer
+//Indentifiers
 let LoggedIn = "loggedIn"
+let POSTCELL_IDENTIFIER = "PostCell"
 
 //colors
 let SHADOW_COLOR: CGFloat = 157.0 / 255.0
