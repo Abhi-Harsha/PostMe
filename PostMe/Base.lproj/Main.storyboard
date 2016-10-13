@@ -221,9 +221,6 @@
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="screen" translatesAutoresizingMaskIntoConstraints="NO" id="zj9-Vk-y9i">
-                                                                    <rect key="frame" x="172" y="182" width="240" height="128"/>
-                                                                </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sz-MN-Bdd">
                                                                     <rect key="frame" x="496" y="8" width="80" height="21"/>
                                                                     <constraints>
@@ -242,6 +239,9 @@
                                                                     </constraints>
                                                                     <state key="normal" backgroundImage="heart-full"/>
                                                                 </button>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="screen" translatesAutoresizingMaskIntoConstraints="NO" id="zj9-Vk-y9i">
+                                                                    <rect key="frame" x="172" y="182" width="240" height="128"/>
+                                                                </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -296,7 +296,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uCT-zN-isk"/>
                     <connections>
-                        <outlet property="tableView" destination="ML7-vK-4Qa" id="sc1-VQ-3bL"/>
+                        <outlet property="tableView" destination="ML7-vK-4Qa" id="WGb-XY-fvy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoX-4L-U8b" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0380A101DA562A1008E3244 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0380A0F1DA562A1008E3244 /* Post.swift */; };
 		A0AC2F7B1D47E75500ACA108 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC2F7A1D47E75500ACA108 /* MaterialView.swift */; };
 		A0B64DDB1D47F29D005B5850 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B64DDA1D47F29D005B5850 /* MaterialButton.swift */; };
 		A0B64DDD1D47F572005B5850 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B64DDC1D47F572005B5850 /* MaterialTextField.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		7F87A72553847CB9D8CE0651 /* Pods-PostMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostMe/Pods-PostMe.debug.xcconfig"; sourceTree = "<group>"; };
+		A0380A0F1DA562A1008E3244 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A0AC2F7A1D47E75500ACA108 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		A0B64DDA1D47F29D005B5850 /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
 		A0B64DDC1D47F572005B5850 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		A02B0CF21D353E5600DBD750 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A0380A0F1DA562A1008E3244 /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				A0F379BC1D25788C001A30A8 /* AppDelegate.swift in Sources */,
 				A0F3EB4D1D3C2076002F18E0 /* Constants.swift in Sources */,
 				A0B64DDD1D47F572005B5850 /* MaterialTextField.swift in Sources */,
+				A0380A101DA562A1008E3244 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

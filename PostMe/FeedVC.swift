@@ -7,44 +7,59 @@
 //
 
 import UIKit
+import Firebase
+import SwiftSpinner
 
 class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
+    var i = 0
+    
+    var posts = [Post]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        
+        SwiftSpinner.show("Fetching user data...")
+        
+        DataService.ds.POST_URL.observeEventType(.Value, withBlock: { (snapshots) in
+            self.posts = []
+            if let snapshot = snapshots.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshot {
+                    if let data = snap.value as? Dictionary<String, AnyObject> {
+                        let key = snap.key
+                        let post = Post(postKey: key, dict: data)
+                        self.posts.append(post)
+                    }
+                }
+            }
+            self.tableView.reloadData()
+            SwiftSpinner.hide()
+        })
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 3
-    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        i = i + 1
+        print("In CellForRowAtIndexPath block\(i)")
+//        let post = posts[indexPath.row]
+//        print(post.PostDescription)
         return tableView.dequeueReusableCellWithIdentifier(POSTCELL_IDENTIFIER) as! PostCell
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        i = i + 1
+        print("In numberOfRowsInSection block\(i)")
+        return posts.count
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        i = i + 1
+        print("In numberOfSectionsInTableView block\(i)")
         return 1
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

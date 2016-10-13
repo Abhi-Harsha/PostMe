@@ -11,8 +11,13 @@ import UIKit
 class PostCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: UIImageView!
+//    @IBOutlet weak var postImg: UIImageView!
+//    @IBOutlet weak var postDescTxtView: UITextView!
+//    @IBOutlet weak var userNameLbl: UILabel!
+//    @IBOutlet weak var likesLbl: UILabel!
 
     override func awakeFromNib() {
+       
         super.awakeFromNib()
         // Initialization code
     }
@@ -21,10 +26,5 @@ class PostCell: UITableViewCell {
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }
