@@ -271,7 +271,11 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
+                                                    <outlet property="likesLbl" destination="7sz-MN-Bdd" id="Iyz-Jz-Ku8"/>
+                                                    <outlet property="postDescTxtView" destination="hGw-h9-6yf" id="F5b-aO-m2n"/>
+                                                    <outlet property="postImg" destination="zj9-Vk-y9i" id="t18-1P-dYl"/>
                                                     <outlet property="profileImage" destination="wXQ-q0-5Au" id="4t6-MH-Ic7"/>
+                                                    <outlet property="userNameLbl" destination="PXf-aw-sZA" id="jAr-A6-uet"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>

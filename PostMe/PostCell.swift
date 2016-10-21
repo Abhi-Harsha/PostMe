@@ -11,10 +11,10 @@ import UIKit
 class PostCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: UIImageView!
-//    @IBOutlet weak var postImg: UIImageView!
-//    @IBOutlet weak var postDescTxtView: UITextView!
-//    @IBOutlet weak var userNameLbl: UILabel!
-//    @IBOutlet weak var likesLbl: UILabel!
+    @IBOutlet weak var postImg: UIImageView!
+    @IBOutlet weak var postDescTxtView: UITextView!
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var likesLbl: UILabel!
 
     override func awakeFromNib() {
        
@@ -25,6 +25,10 @@ class PostCell: UITableViewCell {
     override func drawRect(rect: CGRect) {
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
     }
-
+    
+    func setUpCell(post: Post) {
+        postDescTxtView.text = post.PostDescription
+        likesLbl.text = "\(post.Likes)"
+    }
 
 }
