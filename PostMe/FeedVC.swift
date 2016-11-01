@@ -10,17 +10,22 @@ import UIKit
 import Firebase
 import SwiftSpinner
 
-class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
+class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
+    @IBOutlet weak var postTextField: UITextView!
+    @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    var imagePicker: UIImagePickerController!
     var i = 0
     static var feedImageCache = NSCache()
     var posts = [Post]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker = UIImagePickerController()
         tableView.delegate = self
         tableView.dataSource = self
+        imagePicker.delegate = self
         
         SwiftSpinner.show("Fetching user data...")
         
@@ -69,5 +74,17 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        self.selectedImageView.image = image
+    }
 
+    @IBAction func onImagePressed(sender: UITapGestureRecognizer) {
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func onPostPressed(sender: MaterialButton) {
+    }
 }
