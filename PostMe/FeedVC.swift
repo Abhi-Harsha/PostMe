@@ -19,6 +19,13 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
     var i = 0
     static var feedImageCache = NSCache()
     var posts = [Post]()
+    var Cloud_Name: String!
+    var API_Key: String!
+    var API_SECRET: String!
+    var BASE_URL: String!
+    var SECURE_URL: String!
+    var API_BASE_URL: String!
+    var Env_Variable: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +50,7 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
             self.tableView.reloadData()
             SwiftSpinner.hide()
         })
-        
+        getAPIDetails()
     }
 
     
@@ -86,5 +93,48 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
     
     
     @IBAction func onPostPressed(sender: MaterialButton) {
+        
+        
     }
+    
+    func getAPIDetails() {
+        let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!)!
+        
+        if let name = dict["Cloudinary Cloud Name"] as? String {
+            self.Cloud_Name = name
+        }
+        
+        if let secret = dict["Cloudinary API SECRET"] as? String {
+            self.API_SECRET = secret
+        }
+        
+        if let key = dict["Cloudninary API KEY"] as? String {
+            self.API_Key = key
+        }
+        
+        if let baseUrl = dict["Cloudinary Base URL"] as? String {
+            self.BASE_URL = baseUrl
+        }
+        
+        if let apiBaseUrl = dict["Cloudinary API BASE URL"] as? String {
+            self.API_BASE_URL = apiBaseUrl
+        }
+        
+        if let secureUrl = dict["Cloudinary Secure URL"] as? String {
+            self.SECURE_URL = secureUrl
+        }
+        
+        if let envVar = dict["Cloudinary Env Variable"] as? String {
+            self.Env_Variable = envVar
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }
