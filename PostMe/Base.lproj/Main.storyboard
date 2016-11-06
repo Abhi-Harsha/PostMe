@@ -286,14 +286,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kTD-S9-tIB">
                                                 <rect key="frame" x="42" y="0.0" width="568" height="50"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZFP-jd-HI0">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFP-jd-HI0">
                                                         <rect key="frame" x="0.0" y="0.0" width="458" height="50"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="p6t-0o-7tF">
+                                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p6t-0o-7tF">
                                                         <rect key="frame" x="463" y="0.0" width="50" height="50"/>
                                                         <gestureRecognizers/>
                                                         <constraints>
@@ -304,7 +303,7 @@
                                                             <outletCollection property="gestureRecognizers" destination="yow-dr-8RR" appends="YES" id="Rbx-pG-iY4"/>
                                                         </connections>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eag-us-VUf" userLabel="Post Button" customClass="MaterialButton" customModule="PostMe" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eag-us-VUf" userLabel="Post Button" customClass="MaterialButton" customModule="PostMe" customModuleProvider="target">
                                                         <rect key="frame" x="518" y="0.0" width="50" height="50"/>
                                                         <color key="backgroundColor" red="0.23777215779999999" green="0.42293778250000003" blue="0.62356839009999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -411,7 +410,6 @@
     </scenes>
     <resources>
         <image name="PostMe" width="314" height="104"/>
-        <image name="camera" width="50" height="50"/>
         <image name="fb-icon" width="65" height="65"/>
         <image name="heart-full" width="150" height="147"/>
         <image name="joker" width="1920" height="1080"/>

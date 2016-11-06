@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftSpinner
+import Alamofire
 
 class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
@@ -16,6 +17,7 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     var imagePicker: UIImagePickerController!
+    let defaultImageName = "camera"
     var i = 0
     static var feedImageCache = NSCache()
     var posts = [Post]()
@@ -26,9 +28,11 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
     var SECURE_URL: String!
     var API_BASE_URL: String!
     var Env_Variable: String!
+    var imgShackApiKey: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.selectedImageView.image = UIImage(named: defaultImageName)
         imagePicker = UIImagePickerController()
         tableView.delegate = self
         tableView.dataSource = self
@@ -52,6 +56,9 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
         })
         getAPIDetails()
     }
+    
+
+    
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -93,8 +100,70 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
     
     
     @IBAction func onPostPressed(sender: MaterialButton) {
+        guard let descText = postTextField.text where descText != "" else{
+            return
+        }
+        var imglink: String?
+        SwiftSpinner.show("Posting...")
+        //check if default image is selected or not
+        if let selectedImage = self.selectedImageView.image where selectedImage != UIImage(named: defaultImageName)  {
+            let urlStr = "https://post.imageshack.us/upload_api.php"
+            let url = NSURL(string: urlStr)
+            let imgData = UIImageJPEGRepresentation(selectedImage, 0.3)
+            let keyData = imgShackApiKey.dataUsingEncoding(NSUTF8StringEncoding)
+            let keyJSON = "json".dataUsingEncoding(NSUTF8StringEncoding)
+            
+            
+            Alamofire.upload(.POST, url!, multipartFormData: { (multipartFormData) in
+                
+                multipartFormData.appendBodyPart(data: imgData!, name: "fileupload", fileName: "image", mimeType: "image/jpg")
+                multipartFormData.appendBodyPart(data: keyData!, name: "key")
+                multipartFormData.appendBodyPart(data: keyJSON!, name: "format")
+                
+            }) { encodedResult in
+                switch encodedResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON(completionHandler: { (_reponse: Response<AnyObject, NSError>) in
+                        
+                        if let responseDict = _reponse.result.value as? Dictionary<String, AnyObject> {
+                            
+                            if let linksDict = responseDict["links"] as? Dictionary<String, AnyObject> {
+                                if let link = linksDict["image_link"] as? String {
+                                    imglink = link
+                                    self.makeNewFirebasePost(imglink, desc: descText)
+                                }
+                            }
+                            
+                        }
+                    })
+                    break
+                case .Failure(let error):
+                    print(error)
+                    break
+                }
+            }
+        } else {
+            self.makeNewFirebasePost(imglink, desc: descText)
+        }
+    }
+    
+    func makeNewFirebasePost(imgUrl: String?, desc: String){
+        var post: Dictionary<String, AnyObject> = [
+            "Description": "\(desc)",
+            "likes": 0
+        ]
         
-        
+        if let imglink = imgUrl {
+            post["imageURL"] = "\(imglink)"
+        } else {
+            post["imageURL"] = nil
+        }
+        let newChild = DataService.ds.POST_URL.childByAutoId()
+        newChild.setValue(post)
+        tableView.reloadData()
+        postTextField.text = ""
+        selectedImageView.image = UIImage(contentsOfFile: defaultImageName)
+        SwiftSpinner.hide()
     }
     
     func getAPIDetails() {
@@ -127,6 +196,10 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
         
         if let envVar = dict["Cloudinary Env Variable"] as? String {
             self.Env_Variable = envVar
+        }
+        
+        if let imgApiKey = dict["Img Shack API Key"] as? String {
+            self.imgShackApiKey = imgApiKey
         }
     }
     
