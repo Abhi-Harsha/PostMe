@@ -43,6 +43,8 @@ class Post {
     }
     
     init(postKey: String, dict: Dictionary<String, AnyObject>){
+        
+        self._postKey = postKey
 
         if let likes = dict["likes"] as? Int {
             self._likes = likes

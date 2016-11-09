@@ -51,6 +51,7 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
                     }
                 }
             }
+            self.posts = self.posts.sort({ $0.PostKey  > $1.PostKey })
             self.tableView.reloadData()
             SwiftSpinner.hide()
         })
@@ -162,7 +163,7 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
         newChild.setValue(post)
         tableView.reloadData()
         postTextField.text = ""
-        selectedImageView.image = UIImage(contentsOfFile: defaultImageName)
+        self.selectedImageView.image = UIImage(named: defaultImageName)
         SwiftSpinner.hide()
     }
     
@@ -202,7 +203,6 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
             self.imgShackApiKey = imgApiKey
         }
     }
-    
     
     
     

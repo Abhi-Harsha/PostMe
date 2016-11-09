@@ -41,11 +41,17 @@ class PostCell: UITableViewCell {
             print("image picked up from cache")
         } else {
             if let url = post.ImageUrl {
-                request = Alamofire.request(.GET, url).validate(contentType: ["images/*"]).response(completionHandler: { (request, reponse, data, error) in
-                    let img = UIImage(data: data!)
-                    self.postImg.image = img
-                    FeedVC.feedImageCache.setObject(img!, forKey: url)
-                    print("image added to cache \(url)")
+                request = Alamofire.request(.GET, url).validate(contentType: ["image/*"]).response(completionHandler: { (request, reponse, data, error) in
+                    if error != nil {
+                        print(error.debugDescription)
+                    } else {
+                        if let imgdata = data {
+                            let img = UIImage(data: imgdata)
+                            self.postImg.image = img
+                            FeedVC.feedImageCache.setObject(img!, forKey: url)
+                            print("image added to cache \(url)")
+                        }
+                    }
                 })
             } else {
                 postImg.hidden = true
