@@ -15,8 +15,8 @@ let _BASE_URL = "https://postme-30d0e.firebaseio.com"
 class DataService {
     static let ds = DataService()
     
-    private var _Post_URL = FIRDatabase.database().referenceFromURL("\(_BASE_URL)/Posts")
-    private var _User_URL = FIRDatabase.database().referenceFromURL("\(_BASE_URL)/Users")
+    private var _Post_URL = FIRDatabase.database().reference(fromURL: "\(_BASE_URL)/Posts")
+    private var _User_URL = FIRDatabase.database().reference(fromURL: "\(_BASE_URL)/Users")
     
     var POST_URL: FIRDatabaseReference {
      return _Post_URL

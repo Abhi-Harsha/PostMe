@@ -25,35 +25,40 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func viewDidAppear(animated: Bool) {
-        if NSUserDefaults.standardUserDefaults().valueForKey(USER_ID) != nil {
-            self.performSegueWithIdentifier(LoggedIn, sender: nil)
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.value(forKey: USER_ID) != nil {
+            self.performSegue(withIdentifier: LoggedIn, sender: nil)
         }
     }
     
     @IBAction func onLoginBtnPressed(sender: UIButton!) {
         
-        if let email = userName.text where userName.text != "", let pwd = password.text where password.text != "" {
-            FIRAuth.auth()?.createUserWithEmail(email, password: pwd, completion: { user, creationerror in
+        if let email = userName.text, userName.text != "", let pwd = password.text, password.text != "" {
+            FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { user, creationerror in
                 
                 if let errorcode =  creationerror {
                     
-                    switch errorcode.code {
+                    switch errorcode {
                         
-                        case FIRAuthErrorCode.ErrorCodeWeakPassword.rawValue : print("weak password\(errorcode.debugDescription)")
-                                                                               self.showAlertPopUp("Password is weak", message: "Please provide password of length greater than 6 characters")
+                        case FIRAuthErrorCode.errorCodeWeakPassword:
+                                                                                print("weak password\(errorcode)")
+                                                                               self.showAlertPopUp(title: "Password is weak", message: "Please provide password of length greater than 6 characters")
                                                                                break;
-                        case FIRAuthErrorCode.ErrorCodeInvalidEmail.rawValue: print("invalid email")
-                                                                              self.showAlertPopUp("Invalid Email Id", message: "Please check your emailid and try again")
+                        case FIRAuthErrorCode.errorCodeInvalidEmail:
+                                                                                print("invalid email")
+                                                                              self.showAlertPopUp(title: "Invalid Email Id", message: "Please check your emailid and try again")
                                                                               break;
-                        case FIRAuthErrorCode.ErrorCodeEmailAlreadyInUse.rawValue : print("Email Id already exists")
-                                                                           self.showAlertPopUp("Email Id already exists", message: "Please try with a different emailid")
+                        case FIRAuthErrorCode.errorCodeEmailAlreadyInUse:
+                                                                            print("Email Id already exists")
+                                                                            self.showAlertPopUp(title: "Email Id already exists", message: "Please try with a different emailid")
                                                                                 break;
-                        case FIRAuthErrorCode.ErrorCodeNetworkError.rawValue: print("Network error")
-                                                                                self.showAlertPopUp("Network error!", message: "Please check your internet connection and try again")
+                        case FIRAuthErrorCode.errorCodeNetworkError:
+                                                                                print("Network error")
+                                                                                self.showAlertPopUp(title: "Network error!", message: "Please check your internet connection and try again")
                                                                                 break;
-                        default: print("Some error occured while signing up\(errorcode.debugDescription)")
-                                 self.showAlertPopUp("Some error occured while signing up", message: "Please try again.")
+                        default:
+                                 self.showAlertPopUp(title: "Some error occured while signing up", message: "Please try again.")
+                                 print(errorcode.localizedDescription)
                                 break
                     }
                     
@@ -61,10 +66,10 @@ class ViewController: UIViewController {
                     if let user = user {
                         let userdict = ["provider" : "email", "test" : "testchild"]
                         print("\(userdict)")
-                        DataService.ds.CreateFireBaseUser(user.uid, User: userdict)
-                        NSUserDefaults.standardUserDefaults().setValue(user.uid, forKey: USER_ID)
+                        DataService.ds.CreateFireBaseUser(uid: user.uid, User: userdict)
+                        UserDefaults.standard.setValue(user.uid, forKey: USER_ID)
                     }
-                    self.performSegueWithIdentifier(LoggedIn, sender: sender)
+                    self.performSegue(withIdentifier: LoggedIn, sender: sender)
                 }
                 
             })
@@ -75,40 +80,40 @@ class ViewController: UIViewController {
     @IBAction func onFbBtnPressed(sender: UIButton!) {
        let fbmanager = FBSDKLoginManager()
         
-        fbmanager.logInWithReadPermissions(["email"], fromViewController: self) { (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
+        fbmanager.logIn(withReadPermissions: ["email"], from: self) { (result: FBSDKLoginManagerLoginResult?, error: Error?) in
             if error != nil {
                 print("There was an error while loggin in \(error.debugDescription)")
-            } else if result.isCancelled {
+            } else if (result?.isCancelled)! {
                 print("Facebook login was cancelled")
             } else {
                 print("logged into facebook")
-            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 print(credential)
                 
-                FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+                FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                     if let errorcode = error {
-                        print(errorcode.debugDescription)
+                        print(errorcode.localizedDescription)
                     } else {
                         print("user created on firebase\(user.debugDescription)")
                         if let user = user {
                             let userdict = ["provider": "facebook"]
-                            DataService.ds.CreateFireBaseUser(user.uid, User: userdict)
+                            DataService.ds.CreateFireBaseUser(uid: user.uid, User: userdict)
                             
-                            NSUserDefaults.standardUserDefaults().setValue(user.uid, forKey: USER_ID)
+                            UserDefaults.standard.setValue(user.uid, forKey: USER_ID)
                         }
                         
                     }
                 }
-                self.performSegueWithIdentifier(LoggedIn, sender: sender)
+                self.performSegue(withIdentifier: LoggedIn, sender: sender)
             }
         }
     }
     
     func showAlertPopUp(title: String, message: String) {
-       let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-       let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+       let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(action)
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
 }

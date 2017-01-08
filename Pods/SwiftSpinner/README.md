@@ -6,6 +6,7 @@
 
 SwiftSpinner is an extra beautiful activity indicator with plain and bold style fitting iOS 8 design very well. It uses dynamic blur and translucency to overlay the current screen contents and display an activity indicator with text (or the so called “spinner”).
 
+SwiftSpinner is now **swift3**.
 - - -
 
 I developed it for my Swift app called **Doodle Doodle** and wanted to share it with everyone. Check the app here: http://doodledoodle.info
@@ -94,13 +95,24 @@ In case you want to change an arbitrary aspect of the text on screen access dire
     SwiftSpinner.sharedInstance.subtitleLabel
 ```
 
-Finally you can show a spinner only if certain amount of time has passed (e.g. if you are downloading a file - show a message only if the operation takes longer than certain amount of time):
+You can show a spinner only if certain amount of time has passed (e.g. if you are downloading a file - show a message only if the operation takes longer than certain amount of time):
 
 ```swift
-    SwiftSpinner.showWithDelay(2.0, title: "It's taking longer than expected")
+    SwiftSpinner.show(delay: 2.0, title: "It's taking longer than expected")
 ```
 
-If you call `show(…)` or `hide()` before the `delay` time has passed - this will clear the call to `showWithDelay(…)`.
+If you call `show(…)` or `hide()` before the `delay` time has passed - this will clear the call to `show(delay: …)`.
+
+You show a message for a certain duration:
+```swift
+    SwiftSpinner.show(duration: 4.0, title: "It's taking longer than expected")
+```
+
+Or you can use `SwiftSpinner` as a progress bar by directly setting the current progress like so:
+
+```swift
+	SwiftSpinner.show(progress: 0.2, title: "Downloading Data...") // 20% trough the process
+```
 
 ## Requirements
 

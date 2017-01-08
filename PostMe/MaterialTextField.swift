@@ -12,19 +12,19 @@ class MaterialTextField: UITextField {
 
     override func awakeFromNib() {
         layer.cornerRadius = 2.0
-        layer.borderColor = UIColor.blackColor().CGColor
+        layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 1.0
         layer.shadowOpacity = 0.8
-        layer.shadowColor = UIColor.darkGrayColor().CGColor
+        layer.shadowColor = UIColor.darkGray.cgColor
         
     }
     //placebolder
-    override func textRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, 10, 0)
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: 10, dy: 0)
     }
     //editing
-    override func editingRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, 10, 0)
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: 10, dy: 0)
     }
 
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46D1F7DB1DE8B8000001C232 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46D1F7D91DE8B8000001C232 /* GoogleService-Info.plist */; };
+		46D1F7DC1DE8B8000001C232 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46D1F7DA1DE8B8000001C232 /* Info.plist */; };
 		A0380A101DA562A1008E3244 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0380A0F1DA562A1008E3244 /* Post.swift */; };
 		A0AC2F7B1D47E75500ACA108 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC2F7A1D47E75500ACA108 /* MaterialView.swift */; };
 		A0B64DDB1D47F29D005B5850 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B64DDA1D47F29D005B5850 /* MaterialButton.swift */; };
@@ -21,13 +23,14 @@
 		A0F379C11D25788C001A30A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F379BF1D25788C001A30A8 /* Main.storyboard */; };
 		A0F379C31D25788C001A30A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F379C21D25788C001A30A8 /* Assets.xcassets */; };
 		A0F379C61D25788C001A30A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F379C41D25788C001A30A8 /* LaunchScreen.storyboard */; };
-		A0F379CE1D2579A4001A30A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0F379CD1D2579A4001A30A8 /* GoogleService-Info.plist */; };
 		A0F3EB4D1D3C2076002F18E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3EB4C1D3C2076002F18E0 /* Constants.swift */; };
 		A0F5A6261D4E8D0200E1F3A7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5A6251D4E8D0200E1F3A7 /* PostCell.swift */; };
 		D16B2D9D1282330C786C21B6 /* Pods_PostMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55CB7627CFB10C0F69A3E45 /* Pods_PostMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46D1F7D91DE8B8000001C232 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		46D1F7DA1DE8B8000001C232 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F87A72553847CB9D8CE0651 /* Pods-PostMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostMe/Pods-PostMe.debug.xcconfig"; sourceTree = "<group>"; };
 		A0380A0F1DA562A1008E3244 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A0AC2F7A1D47E75500ACA108 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
@@ -44,8 +47,6 @@
 		A0F379C01D25788C001A30A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0F379C21D25788C001A30A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0F379C51D25788C001A30A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A0F379C71D25788C001A30A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0F379CD1D2579A4001A30A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0F3EB4C1D3C2076002F18E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A0F5A6251D4E8D0200E1F3A7 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		AF30DE3445C8FA2A450612FF /* Pods-PostMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostMe/Pods-PostMe.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,8 +134,8 @@
 				A0F379BF1D25788C001A30A8 /* Main.storyboard */,
 				A0F379C21D25788C001A30A8 /* Assets.xcassets */,
 				A0F379C41D25788C001A30A8 /* LaunchScreen.storyboard */,
-				A0F379C71D25788C001A30A8 /* Info.plist */,
-				A0F379CD1D2579A4001A30A8 /* GoogleService-Info.plist */,
+				46D1F7D91DE8B8000001C232 /* GoogleService-Info.plist */,
+				46D1F7DA1DE8B8000001C232 /* Info.plist */,
 			);
 			path = PostMe;
 			sourceTree = "<group>";
@@ -174,12 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0F379CA1D25788C001A30A8 /* Build configuration list for PBXNativeTarget "PostMe" */;
 			buildPhases = (
-				F00488D194501BB2A8AADA50 /* 📦 Check Pods Manifest.lock */,
+				F00488D194501BB2A8AADA50 /* [CP] Check Pods Manifest.lock */,
 				A0F379B41D25788C001A30A8 /* Sources */,
 				A0F379B51D25788C001A30A8 /* Frameworks */,
 				A0F379B61D25788C001A30A8 /* Resources */,
-				AA65A89AE5EEC5F55E6DFCF0 /* 📦 Embed Pods Frameworks */,
-				D21A9566B0BE7BE6A672EB88 /* 📦 Copy Pods Resources */,
+				AA65A89AE5EEC5F55E6DFCF0 /* [CP] Embed Pods Frameworks */,
+				D21A9566B0BE7BE6A672EB88 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,8 +231,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0F379C61D25788C001A30A8 /* LaunchScreen.storyboard in Resources */,
-				A0F379CE1D2579A4001A30A8 /* GoogleService-Info.plist in Resources */,
+				46D1F7DB1DE8B8000001C232 /* GoogleService-Info.plist in Resources */,
 				A0F379C31D25788C001A30A8 /* Assets.xcassets in Resources */,
+				46D1F7DC1DE8B8000001C232 /* Info.plist in Resources */,
 				A0F379C11D25788C001A30A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,14 +241,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AA65A89AE5EEC5F55E6DFCF0 /* 📦 Embed Pods Frameworks */ = {
+		AA65A89AE5EEC5F55E6DFCF0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,14 +256,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PostMe/Pods-PostMe-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D21A9566B0BE7BE6A672EB88 /* 📦 Copy Pods Resources */ = {
+		D21A9566B0BE7BE6A672EB88 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,19 +271,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PostMe/Pods-PostMe-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F00488D194501BB2A8AADA50 /* 📦 Check Pods Manifest.lock */ = {
+		F00488D194501BB2A8AADA50 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -422,6 +424,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abs.PostMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -438,6 +441,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abs.PostMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

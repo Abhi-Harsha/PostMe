@@ -19,7 +19,7 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
     var imagePicker: UIImagePickerController!
     let defaultImageName = "camera"
     var i = 0
-    static var feedImageCache = NSCache()
+    static var feedImageCache = NSCache<AnyObject, AnyObject>()
     var posts = [Post]()
     var Cloud_Name: String!
     var API_Key: String!
@@ -40,7 +40,7 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
         
         SwiftSpinner.show("Fetching user data...")
         
-        DataService.ds.POST_URL.observeEventType(.Value, withBlock: { (snapshots) in
+        DataService.ds.POST_URL.observe(.value, with: { (snapshots) in
             self.posts = []
             if let snapshot = snapshots.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
@@ -51,7 +51,7 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
                     }
                 }
             }
-            self.posts = self.posts.sort({ $0.PostKey  > $1.PostKey })
+            self.posts = self.posts.sorted(by: { $0.PostKey  > $1.PostKey })
             self.tableView.reloadData()
             SwiftSpinner.hide()
         })
@@ -62,27 +62,27 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
     
 
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = posts[indexPath.row]
         var img: UIImage?
-        if let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as? PostCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
             
             cell.request?.cancel()
             
             if let url = post.ImageUrl {
-            if FeedVC.feedImageCache.objectForKey(url) != nil {
-                    img = FeedVC.feedImageCache.objectForKey(url) as? UIImage
-                    cell.setUpCell(post, img: img)
+            if FeedVC.feedImageCache.object(forKey: url as AnyObject) != nil {
+                    img = FeedVC.feedImageCache.object(forKey: url as AnyObject) as? UIImage
+                cell.setUpCell(post: post, img: img)
                 }
             }
-            cell.setUpCell(post, img: img)
+            cell.setUpCell(post: post, img: img)
             return cell
         } else {
             return PostCell()
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
@@ -91,71 +91,59 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        imagePicker.dismiss(animated: true, completion: nil)
         self.selectedImageView.image = image
     }
 
     @IBAction func onImagePressed(sender: UITapGestureRecognizer) {
-        presentViewController(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
     
     
     @IBAction func onPostPressed(sender: MaterialButton) {
-        guard let descText = postTextField.text where descText != "" else{
+        guard let descText = postTextField.text, descText != "" else{
             return
         }
         var imglink: String?
         SwiftSpinner.show("Posting...")
         //check if default image is selected or not
-        if let selectedImage = self.selectedImageView.image where selectedImage != UIImage(named: defaultImageName)  {
+        if let selectedImage = self.selectedImageView.image, selectedImage != UIImage(named: defaultImageName)  {
             let urlStr = "https://post.imageshack.us/upload_api.php"
-            let url = NSURL(string: urlStr)
+            let url = URLRequest(url: URL(string: "\(urlStr)")!)
             let imgData = UIImageJPEGRepresentation(selectedImage, 0.3)
-            let keyData = imgShackApiKey.dataUsingEncoding(NSUTF8StringEncoding)
-            let keyJSON = "json".dataUsingEncoding(NSUTF8StringEncoding)
+            let keyData = imgShackApiKey.data(using: String.Encoding.utf8)
+            let keyJSON = "json".data(using: String.Encoding.utf8)
+    
             
-            
-            Alamofire.upload(.POST, url!, multipartFormData: { (multipartFormData) in
-                
-                multipartFormData.appendBodyPart(data: imgData!, name: "fileupload", fileName: "image", mimeType: "image/jpg")
-                multipartFormData.appendBodyPart(data: keyData!, name: "key")
-                multipartFormData.appendBodyPart(data: keyJSON!, name: "format")
-                
-            }) { encodedResult in
-                switch encodedResult {
-                case .Success(let upload, _, _):
-                    upload.responseJSON(completionHandler: { (_reponse: Response<AnyObject, NSError>) in
-                        
-                        if let responseDict = _reponse.result.value as? Dictionary<String, AnyObject> {
-                            
-                            if let linksDict = responseDict["links"] as? Dictionary<String, AnyObject> {
-                                if let link = linksDict["image_link"] as? String {
-                                    imglink = link
-                                    self.makeNewFirebasePost(imglink, desc: descText)
-                                }
-                            }
-                            
-                        }
-                    })
-                    break
-                case .Failure(let error):
-                    print(error)
-                    break
-                }
-            }
+//            Alamofire.upload( multipartFormData :
+//                { multipartFormData in
+//                multipartFormData.append(imgData!, withName: "fileupload", fileName: "image", mimeType: "image/jpg")
+//            }, to: URL, encodingCompletion: {
+//                encodingResult in
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    upload.responseJSON { response in
+//                        debugPrint("SUCCESS RESPONSE: \(response)")
+//                    }
+//                case .failure(let encodingError):
+//                    // hide progressbas here
+//                    print("ERROR RESPONSE: \(encodingError)")
+//                }
+//            })
+          
         } else {
-            self.makeNewFirebasePost(imglink, desc: descText)
+            self.makeNewFirebasePost(imgUrl: imglink, desc: descText)
         }
     }
     
     func makeNewFirebasePost(imgUrl: String?, desc: String){
         var post: Dictionary<String, AnyObject> = [
-            "Description": "\(desc)",
-            "likes": 0
+            "Description": "\(desc)" as AnyObject,
+            "likes": 0 as AnyObject
         ]
         
         if let imglink = imgUrl {
-            post["imageURL"] = "\(imglink)"
+            post["imageURL"] = "\(imglink)" as String as AnyObject?
         } else {
             post["imageURL"] = nil
         }
@@ -168,7 +156,7 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
     }
     
     func getAPIDetails() {
-        let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist")
+        let path = Bundle.main.path(forResource: "Info", ofType: "plist")
         let dict = NSDictionary(contentsOfFile: path!)!
         
         if let name = dict["Cloudinary Cloud Name"] as? String {

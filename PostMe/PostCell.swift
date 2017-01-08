@@ -25,7 +25,7 @@ class PostCell: UITableViewCell {
         // Initialization code
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
     }
     
@@ -41,20 +41,30 @@ class PostCell: UITableViewCell {
             print("image picked up from cache")
         } else {
             if let url = post.ImageUrl {
-                request = Alamofire.request(.GET, url).validate(contentType: ["image/*"]).response(completionHandler: { (request, reponse, data, error) in
-                    if error != nil {
-                        print(error.debugDescription)
-                    } else {
-                        if let imgdata = data {
-                            let img = UIImage(data: imgdata)
-                            self.postImg.image = img
-                            FeedVC.feedImageCache.setObject(img!, forKey: url)
-                            print("image added to cache \(url)")
-                        }
+                let convURL = URLRequest(url: URL(string: url)!)
+                request = Alamofire.request(convURL).response(completionHandler: { (DefaultDataResponse) in
+                    let data = DefaultDataResponse
+                    //let image = UIImage(data: data as! NSData)
+                    if let imgData = data.data {
+                        let image = UIImage(data: imgData)
+                        self.postImg.image = image
+                        FeedVC.feedImageCache.setObject(image!, forKey: url as AnyObject)
                     }
                 })
+//                request = Alamofire.request(url).response(completionHandler: { (request, reponse, data, error) in
+//                    if error != nil {
+//                        print(error.debugDescription)
+//                    } else {
+//                        if let imgdata = data {
+//                            let img = UIImage(data: imgdata)
+//                            self.postImg.image = img
+//                            FeedVC.feedImageCache.setObject(img!, forKey: url)
+//                            print("image added to cache \(url)")
+//                        }
+//                    }
+//                })
             } else {
-                postImg.hidden = true
+                postImg.isHidden = true
                 print("image hidden\(post.PostDescription)")
             }
         }
