@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SwiftSpinner
 import Alamofire
+import Firebase
 
 class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
@@ -106,6 +107,7 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource, UII
         }
         var imglink: String?
         SwiftSpinner.show("Posting...")
+        let storage = FIRStorage.storage()
         //check if default image is selected or not
         if let selectedImage = self.selectedImageView.image, selectedImage != UIImage(named: defaultImageName)  {
             let urlStr = "https://post.imageshack.us/upload_api.php"
